@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 const N = 25
 
@@ -18,6 +20,11 @@ func main() {
 			pics_09(x, y)
 			pics_10(x, y)
 			pics_11(x, y)
+			pics_12(x, y)
+			pics_13(x, y)
+			pics_14(x, y)
+			pics_15(x, y)
+			pics_16(x, y)
 			pics_18(x, y)
 			pics_19(x, y)
 			pics_20(x, y)
@@ -72,6 +79,26 @@ func pics_10(x, y int) {
 
 func pics_11(x, y int) {
 	show((!(x == 0 && y == 0) && (x == 1 || y == 1)) || (!(x == N-1 && y == N-1) && (x == N-2 || y == N-2)))
+}
+
+func pics_12(x, y int) {
+	show(y*y <= 400-x*x) // hint
+}
+
+func pics_13(x, y int) {
+	show(x+y >= 20 && x+y <= 28) // hint
+}
+
+func pics_14(x, y int) {
+	show(x*y <= 100) // hint
+}
+
+func pics_15(x, y int) {
+	show((x-y >= 10 && y-x > -21) || (y-x >= 10 && x-y > -21))
+}
+
+func pics_16(x, y int) {
+	show(x < y+10 && x > y-10 && y < N-x+9 && y > N-x-11)
 }
 
 func pics_18(x, y int) {
