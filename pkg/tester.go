@@ -1,11 +1,12 @@
 package tester
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 	"path/filepath"
 	"strconv"
-	"unicode"
+	"strings"
 )
 
 type Tester struct {
@@ -18,6 +19,8 @@ type Task struct {
 	In       string
 	Out      string
 }
+
+var separator = "\r\n"
 
 func New(path string) *Tester {
 	return &Tester{Path: filepath.Join(path, "testdata")}
@@ -47,13 +50,9 @@ func (t *Tester) GetTasks() (tasks []*Task) {
 
 func (t *Tester) getFileContent(filename string) string {
 	fromFileContent, _ := os.ReadFile(filepath.Join(t.Path, filename))
-	formatted := ""
-	for _, r := range string(fromFileContent) {
-		if !unicode.IsSpace(r) {
-			formatted += string(r)
-		}
-	}
-	return formatted
+	fromFileContent = bytes.TrimRight(fromFileContent, separator)
+
+	return string(fromFileContent)
 }
 
 func (t *Tester) fileExists(filename string) bool {
@@ -62,4 +61,8 @@ func (t *Tester) fileExists(filename string) bool {
 		return false
 	}
 	return !info.IsDir()
+}
+
+func (t *Tester) Separate(param string) []string {
+	return strings.Split(param, separator)
 }
