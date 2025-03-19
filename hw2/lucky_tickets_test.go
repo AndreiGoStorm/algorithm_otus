@@ -1,12 +1,12 @@
 package hw2
 
 import (
-	"algorithm_otus/pkg"
 	"fmt"
 	"path/filepath"
 	"strconv"
 	"testing"
 
+	"algorithm_otus/pkg"
 	"github.com/stretchr/testify/require"
 )
 
