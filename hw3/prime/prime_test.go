@@ -22,7 +22,7 @@ func TestPrimes(t *testing.T) {
 			out, err := strconv.ParseInt(task.Out, 10, 64)
 			require.NoError(t, err)
 
-			actual := primes(in)
+			actual := Primes(in)
 			require.Equal(t, out, actual)
 		})
 	}
@@ -40,7 +40,7 @@ func TestPrimesWithMemory(t *testing.T) {
 			out, err := strconv.ParseInt(task.Out, 10, 64)
 			require.NoError(t, err)
 
-			actual := primesWithMemory(in)
+			actual := PrimesWithMemory(in)
 			require.Equal(t, out, actual)
 		})
 	}
@@ -58,7 +58,7 @@ func TestEratosphen(t *testing.T) {
 			out, err := strconv.ParseInt(task.Out, 10, 64)
 			require.NoError(t, err)
 
-			actual := eratosphen(in)
+			actual := Eratosphen(in)
 			require.Equal(t, out, actual)
 		})
 	}

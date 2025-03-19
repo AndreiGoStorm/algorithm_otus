@@ -2,7 +2,7 @@ package prime
 
 import "math"
 
-func isPrime(n int64) bool {
+func IsPrime(n int64) bool {
 	if n == 2 {
 		return true
 	}
@@ -19,10 +19,10 @@ func isPrime(n int64) bool {
 	return true
 }
 
-func primes(n int64) int64 {
+func Primes(n int64) int64 {
 	count := int64(0)
 	for i := int64(2); i <= n; i++ {
-		if isPrime(i) {
+		if IsPrime(i) {
 			count++
 		}
 	}
@@ -31,39 +31,39 @@ func primes(n int64) int64 {
 }
 
 var (
-	primesCount   int64
-	primesNumbers []int64
+	count  int64
+	primes []int64
 )
 
-func isPrimeWithMemory(n int64) bool {
+func IsPrimeWithMemory(n int64) bool {
 	sqrt := int64(math.Sqrt(float64(n)))
-	for i := int64(0); primesNumbers[i] <= sqrt; i++ {
-		if n%primesNumbers[i] == 0 {
+	for i := int64(0); primes[i] <= sqrt; i++ {
+		if n%primes[i] == 0 {
 			return false
 		}
 	}
 	return true
 }
 
-func primesWithMemory(n int64) int64 {
+func PrimesWithMemory(n int64) int64 {
 	if n < 2 {
 		return 0
 	}
-	primesCount = 1
-	primesNumbers = make([]int64, 0, n/10)
-	primesNumbers = append(primesNumbers, 2)
+	count = 1
+	primes = make([]int64, 0, n/10)
+	primes = append(primes, 2)
 
 	for i := int64(3); i <= n; i++ {
-		if isPrimeWithMemory(i) {
-			primesCount++
-			primesNumbers = append(primesNumbers, i)
+		if IsPrimeWithMemory(i) {
+			count++
+			primes = append(primes, i)
 		}
 	}
 
-	return primesCount
+	return count
 }
 
-func eratosphen(n int64) int64 {
+func Eratosphen(n int64) int64 {
 	prime := make([]bool, n+1)
 	cnt := int64(0)
 	for i := int64(2); i <= n; i++ {
