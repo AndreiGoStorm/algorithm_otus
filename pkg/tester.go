@@ -10,8 +10,7 @@ import (
 )
 
 type Tester struct {
-	Path  string
-	tasks []*Task
+	Path string
 }
 
 type Task struct {
