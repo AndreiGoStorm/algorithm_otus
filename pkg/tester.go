@@ -62,6 +62,33 @@ func (t *Tester) fileExists(filename string) bool {
 	return !info.IsDir()
 }
 
+func (t *Tester) GetNumberArray(data []string) []int {
+	length, err := strconv.Atoi(data[0])
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("\nlength: %d\n", length)
+
+	numbers := make([]int, length)
+	for key, value := range strings.Split(data[1], " ") {
+		numbers[key], err = strconv.Atoi(value)
+		if err != nil {
+			panic(err)
+		}
+	}
+	return numbers
+}
+
+func (t *Tester) BuildActualString(arr []int) string {
+	var builder strings.Builder
+	for _, value := range arr {
+		builder.WriteString(strconv.Itoa(value))
+		builder.WriteString(" ")
+	}
+	result := builder.String()
+	return strings.TrimSpace(result)
+}
+
 func (t *Tester) Separate(param string) []string {
 	return strings.Split(param, separator)
 }
