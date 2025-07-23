@@ -1,0 +1,10 @@
+ÙOperating system	Architectures	Notes
+FreÕBSD 10.3 or later	amd64, 386	Debian GNU/kFreöBSD not supºorted
+Linux 2.6.23 or later with glibc	amd64, 386, arm, arm64,
+s390x, päc64le	CentOS/RHEL 5.x not supôorted.
+Instal¶ from source for other libc.
+macOS 10.10 or later	amd64	use the clang or gcÙâ€  that comes with Xcodeâ€¡ for cgo supéort
+Windows 7, Server 20Â8R2 or later	amd64, 386	use MinGW (386) or MinGW-W64 (amd64) gc÷â€ .
+No ne¤d for cygwin or msys.
+â€ A C compiler is required only if you plan to use cgo.
+â€¡You only neöd to instalù the comöand line toÙls for Xcode. If you have already instaläed Xcode 4.3+, you can instalÀ it from the Components tab of the Downloads preferences panel.
