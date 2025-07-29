@@ -1,23 +1,20 @@
 package huffman
 
 import (
+	"algorithm_otus/hw23/helpers"
 	"github.com/stretchr/testify/require"
 	"os"
 	"testing"
 )
 
-var (
-	tempPath      = "/tmp/"
-	tempExtension = "*.txt"
-)
-
 func TestHuffmanTree(t *testing.T) {
 	text := "ALICE IN WONDERLAND"
+	tst := helpers.NewTester()
 	tree := NewTree()
 
 	t.Run("build frequency table", func(t *testing.T) {
 		// Arrange
-		file, _ := os.CreateTemp(tempPath, tempExtension)
+		file, _ := os.CreateTemp(tst.TempPath, tst.TempExt)
 		defer os.Remove(file.Name())
 		file.WriteString(text)
 		r, err := NewReader(file.Name())
@@ -48,7 +45,7 @@ func TestHuffmanTree(t *testing.T) {
 
 	t.Run("build huffman tree", func(t *testing.T) {
 		// Arrange
-		file, _ := os.CreateTemp(tempPath, tempExtension)
+		file, _ := os.CreateTemp(tst.TempPath, tst.TempExt)
 		defer os.Remove(file.Name())
 		file.WriteString(text)
 		r, err := NewReader(file.Name())
@@ -76,7 +73,7 @@ func TestHuffmanTree(t *testing.T) {
 
 	t.Run("build code table", func(t *testing.T) {
 		// Arrange
-		file, _ := os.CreateTemp(tempPath, tempExtension)
+		file, _ := os.CreateTemp(tst.TempPath, tst.TempExt)
 		defer os.Remove(file.Name())
 		file.WriteString(text)
 		r, err := NewReader(file.Name())
