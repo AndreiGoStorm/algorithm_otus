@@ -39,8 +39,8 @@ func TestRLE(t *testing.T) {
 			require.NoError(t, err)
 			require.Equal(t, string(content), string(decompressedContent))
 
-			require.NoError(t, os.Remove(compress.to))
-			require.NoError(t, os.Remove(decompress.to))
+			//require.NoError(t, os.Remove(compress.to))
+			//require.NoError(t, os.Remove(decompress.to))
 		})
 	}
 }

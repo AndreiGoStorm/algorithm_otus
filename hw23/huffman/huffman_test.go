@@ -10,7 +10,7 @@ import (
 )
 
 func TestHuffman(t *testing.T) {
-	testDataFiles := (&helpers.Tester{}).GetTestDataFiles()
+	testDataFiles := helpers.NewTester().GetTestDataFiles()
 	for _, test := range testDataFiles {
 		t.Run(fmt.Sprintf("file :%s", test.File), func(t *testing.T) {
 			// Arrange
@@ -37,8 +37,9 @@ func TestHuffman(t *testing.T) {
 			decompressedContent, err := os.ReadFile(decompress.to)
 			require.NoError(t, err)
 			require.Equal(t, string(content), string(decompressedContent))
-			require.NoError(t, os.Remove(compress.to))
-			require.NoError(t, os.Remove(decompress.to))
+
+			//require.NoError(t, os.Remove(compress.to))
+			//require.NoError(t, os.Remove(decompress.to))
 		})
 	}
 }
