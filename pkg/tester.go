@@ -63,14 +63,15 @@ func (t *Tester) fileExists(filename string) bool {
 }
 
 func (t *Tester) GetNumberArray(data []string) []int {
-	length, err := strconv.Atoi(data[0])
+	parts := strings.Split(data[0], "\n")
+	length, err := strconv.Atoi(parts[0])
 	if err != nil {
 		panic(err)
 	}
 	fmt.Printf("\nlength: %d\n", length)
 
 	numbers := make([]int, length)
-	for key, value := range strings.Split(data[1], " ") {
+	for key, value := range strings.Split(parts[1], " ") {
 		numbers[key], err = strconv.Atoi(value)
 		if err != nil {
 			panic(err)
